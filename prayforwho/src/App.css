@@ -1,0 +1,39 @@
+.App{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+  background-image: url('../public/bg.jpg');
+  background-size: cover;
+}
+
+h1,h2,p{
+  color:white;
+  font-family: 'Roboto', sans-serif;
+}
+
+h2{
+  padding:10px;
+  text-align: center;
+}
+
+.textarea{
+  min-width: 50%;
+  min-height: 30vh;
+  font-size: 25px;
+  padding:20px;
+  text-align: center;
+}
+
+button{
+  margin-top: 20px;
+  min-width: 50%;
+  min-height: 50px;
+  font-size: 25px;
+  padding:20px;
+  text-align: center;
+  border: 1px solid black;
+  color:black;
+  
+}
