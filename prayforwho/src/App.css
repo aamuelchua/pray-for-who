@@ -37,3 +37,14 @@ button{
   color:black;
   
 }
+
+.historyItemButton{
+  border: None;
+  text-decoration: none;
+  max-width: 80vw;
+  background: none;
+}
+
+.history{
+  margin-top: 0px;
+}
