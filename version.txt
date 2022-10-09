@@ -1,0 +1,5 @@
+Version 1.0.0:
+Main Release, Initial Commit
+
+Version 1.1.0:
+Added History Storage

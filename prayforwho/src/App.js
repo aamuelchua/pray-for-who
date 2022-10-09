@@ -17,6 +17,7 @@ function App() {
     }
 
     setNewNames(newNameList)
+    localStorage.setItem('history', newNameList)
     setShowingState('list')
   }
 
@@ -34,21 +35,40 @@ function App() {
     alert("Copied the text: " + copyText.innerText);
   }
 
+  const handleHistory = () =>{
+    var history = localStorage.getItem('history').replaceAll(',', '\n')
+    setNamelist(history)
+  }
+
   return (
     <>
     {showingState === 'input' ?
       <div className='App'>
-        <h1>Pray for Who?</h1>
+        <h1 style={{fontSize:45}}>Pray for Who?</h1>
         <p>Input the names for those who are present!</p>
-        <textarea className="textarea" onChange={(value)=>setNamelist(value.target.value)} placeholder={"e.g. \nJohn\nJasper\nJames\nJuly\nJune"}></textarea>
+        <textarea className="textarea" value={namelist} onChange={(value)=>setNamelist(value.target.value)} placeholder={"e.g. \nJohn\nJasper\nJames\nJuly\nJune"}></textarea>
         <button clasName="button" onClick={submitButton}>Generate List!</button>
+
+        {localStorage.getItem('history')?<>
+        <h2 style={{width:"100%",textAlign:"center",marginBottom:"0px",marginTop:"50px"}}>Recent Prayer List</h2>
+        <div className="history">
+          {localStorage.getItem('history') ? 
+          <div className="historyItem">
+            <button className={'historyItemButton'} onClick={()=>handleHistory()}>
+              <p>{localStorage.getItem('history').replaceAll(','," -> ")}</p>
+            </button>
+          </div>
+           :null}
+        </div>
+        </>:null}
       </div>
+      
     :
       <div className='App'>
         <h1>Pray for Who?</h1>
         <a onClick={copyToClipboard}><h2 id='final'>{newNames.join(' -> ')} {' -> '} {newNames[0]} </h2></a>
         <p>*click the names to copy*</p>
-        <button clasName="button" onClick={()=>setShowingState('input')}>Generate New List!</button>
+        <button className="button" onClick={()=>setShowingState('input')}>Generate New List!</button>
       </div>
     }
     
